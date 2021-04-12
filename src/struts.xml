@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="default" extends="struts-default">
+	    <result-types>
+			<result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" />
+		</result-types>
+		<action name="downloadFile" class="com.smb.action.DownloadFileAction">
+            <result name="success" type="stream">
+                <param name="contentType">application/octet-stream</param>
+                <param name="inputName">inputStream</param>
+                <param name="contentDisposition">attachment;filename="${fileName}"</param>
+                <param name="bufferSize">4096</param>
+            </result>
+        </action>
+		<action name="userLogin" method="userLogin" class="com.smb.action.LoginAction">			
+			<result name="userLogin" type="tiles">userLogin</result>
+			<result name="error">/index.jsp</result>			
+		</action>
+		<action name="homeLink" method="homeLink" class="com.smb.action.SMBForwardAction">	
+			<result name="userLogin" type="tiles">userLogin</result>									
+		</action>
+		<action name="dailyLedger" method="dailyLedger" class="com.smb.action.DailyLedgerAction">	
+			<result name="dailyLedger" type="tiles">dailyLedger</result>								
+		</action>
+		<action name="downloadLedgerPage" method="downloadLedgerPage" class="com.smb.action.DailyLedgerAction">	
+			<result name="downloadLedgerPage" type="tiles">dailyLedgerPage</result>								
+		</action>
+		<action name="downloadLedgerDeatils" method="downloadLedgerDeatils" class="com.smb.action.DailyLedgerAction">			
+			<result name="downloadLedgerDeatils">/jsp/displayMsg.jsp</result>			
+		</action>
+		<action name="viewLedger" method="viewLedger" class="com.smb.action.DailyLedgerAction">	
+			<result name="viewLedger" type="tiles">viewLedger</result>								
+		</action>
+		<action name="logoutAction" method="logoutAction" class="com.smb.action.SMBForwardAction">	
+			<result name="logoutAction">/index.jsp</result>									
+		</action>
+		<action name="userRegister" method="userRegister" class="com.smb.action.SMBForwardAction">			
+			<result name="userRegister" type="tiles">userRegister</result>
+		</action>		
+		<action name="paymentCalculation" method="paymentCalculation" class="com.smb.action.CustomerRegistrationAction">			
+			<result name="userDataReviced" type="tiles">paymentCalculation</result>
+			<result name="userRegister" type="tiles">userRegister</result>
+		</action>
+		<action name="paymentSave" method="paymentSave" class="com.smb.action.CustomerRegistrationAction">			
+			<result name="paymentSave" type="tiles">paymentSave</result>
+			<result name="userDataReviced" type="tiles">paymentCalculation</result>
+		</action>
+		<action name="userUpdation" method="userUpdation" class="com.smb.action.SMBForwardAction">			
+			<result name="userUpdation" type="tiles">userUpdation</result>
+		</action> 
+		<action name="userDelete" method="userDelete" class="com.smb.action.SMBForwardAction">			
+			<result name="userDelete" type="tiles">userDelete</result>
+		</action>
+		<action name="userUpdateDelete" method="userUpdateDelete" class="com.smb.action.SMBForwardAction">			
+			<result name="userUpdateDelete" type="tiles">userUpdateDelete</result>
+		</action>
+		<action name="userAdminDelete" method="userAdminDelete" class="com.smb.action.AdminRegistrationAction">			
+			<result name="userAdminDelete" type="tiles">userAdminDelete</result>
+		</action>	
+		<action name="getAdminUserList" method="getAdminUserList" class="com.smb.action.AdminRegistrationAction">			
+			<result name="getAdminUserList">/jsp/cheetyMemberJson.jsp</result>			
+		</action>
+		<action name="userAdminDeletePage" method="userAdminDeletePage" class="com.smb.action.AdminRegistrationAction">			
+			<result name="userAdminDeletePage" type="tiles">userAdminDeletePage</result>
+		</action>
+		<action name="viewUserDetails" method="viewUserDetails" class="com.smb.action.SMBForwardAction">			
+			<result name="viewUserDetails" type="tiles">viewUserDetails</result>
+		</action>
+		<action name="viewAdminUsersPage" method="viewAdminUsersPage" class="com.smb.action.AdminRegistrationAction">			
+			<result name="viewAdminUsersPage" type="tiles">viewAdminUsersPage</result>
+		</action>
+		<action name="userDownload" method="userDownload" class="com.smb.action.SMBForwardAction">			
+			<result name="userDownload" type="tiles">userDownload</result>
+		</action>
+		<action name="updateDate" method="updateDate" class="com.smb.action.CustomerRegistrationAction">			
+			<result name="updateDate" type="tiles">updateDate</result>
+		</action>
+		<action name="adminRegistration" method="adminRegistration" class="com.smb.action.AdminRegistrationAction">			
+			<result name="adminRegistration" type="tiles">adminRegistration</result>
+		</action>
+		<action name="getUserDetailsUpdation" method="getUserDetailsUpdation" class="com.smb.action.CustomerUpdationAction">			
+			<result name="getUserDetailsUpdation" type="tiles">getUserDetailsUpdation</result>
+			<result name="getUserDetailsUpdation" type="tiles">userUpdation</result>
+		</action>
+		<action name="updateNewDate" method="updateNewDate" class="com.smb.action.CustomerUpdationAction">			
+			<result name="getUserDetailsDateUpdation" type="tiles">getUserDetailsDateUpdation</result>
+			<result name="updateDate" type="tiles">updateDate</result>
+		</action>
+		<action name="getUserDetailsDateUpdation" method="getUserDetailsDateUpdation" class="com.smb.action.CustomerUpdationAction">			
+			<result name="getUserDetailsDateUpdation" type="tiles">getUserDetailsDateUpdation</result>
+			<result name="updateDate" type="tiles">updateDate</result>
+		</action>
+		<action name="getUserDetailsForDelete" method="getUserDetailsForDelete" class="com.smb.action.SMBDeleteAction">			
+			<result name="getUserDetailsForDelete" type="tiles">getUserDetailsForDelete</result>
+			<result name="getUserDetailsForDelete" type="tiles">getUserDetailsForDelete</result>
+		</action>
+		<action name="userDueCalculation" method="userDueCalculation" class="com.smb.action.CustomerUpdationAction">			
+			<result name="userDueCalculation" type="tiles">userDueCalculation</result>
+			<result name="getUserDetailsUpdation" type="tiles">getUserDetailsUpdation</result>
+		</action>
+		<action name="userFinalDueCalculation" method="userFinalDueCalculation" class="com.smb.action.SMBDeleteAction">			
+			<result name="userFinalDueCalculation" type="tiles">userFinalDueCalculation</result>
+			<result name="getUserDetailsForDelete" type="tiles">getUserDetailsForDelete</result>
+		</action>
+		<action name="createProduct" method="createProduct" class="com.smb.action.ProductDetailsAction">			
+			<result name="createProduct" type="tiles">createProduct</result>
+		</action>
+		<action name="saveProduct" method="saveProduct" class="com.smb.action.ProductDetailsAction">			
+			<result name="saveProduct" type="tiles">saveProduct</result>
+		</action>
+		<action name="updateUserDueDetails" method="updateUserDueDetails" class="com.smb.action.CustomerUpdationAction">			
+			<result name="updateUserDueDetails" type="tiles">updateUserDueDetails</result>
+			<result name="userDueCalculation" type="tiles">userDueCalculation</result>
+		</action>
+		<action name="finalUpdateDelete" method="userFinalDueUpdateDeleteDetails" class="com.smb.action.SMBDeleteAction">			
+			<result name="userFinalDueUpdateDeleteDetails" type="tiles">userFinalDueUpdateDeleteDetails</result>
+			<result name="userFinalDueCalculation" type="tiles">userFinalDueCalculation</result>
+		</action>
+		<action name="deleteDetails" method="deleteDetails" class="com.smb.action.SMBDeleteAction">			
+			<result name="deleteDetails" type="tiles">deleteDetails</result>
+			<!-- <result name="userFinalDueCalculation" type="tiles">userFinalDueCalculation</result> -->
+		</action>
+		<action name="userDownloadDeatils" method="userDownloadDeatils" class="com.smb.action.CustomerDownloadAction">			
+			<!-- <result name="userDownloadDeatils">/jsp/displayMsg.jsp</result>		 -->	
+			<result name="success" type="stream">
+                <param name="contentType">application/octet-stream</param>
+                <param name="inputName">inputStream</param>
+                <param name="contentDisposition">attachment;filename="${fileName}"</param>
+                <param name="bufferSize">4096</param>
+            </result>
+		</action>
+		<action name="userDownloadDeatilsCusId" method="userDownloadDeatilsCusId" class="com.smb.action.CustomerDownloadAction">			
+			<!-- <result name="userDownloadDeatils">/jsp/displayMsg.jsp</result>		 -->	
+			<result name="success" type="stream">
+                <param name="contentType">application/octet-stream</param>
+                <param name="inputName">inputStream</param>
+                <param name="contentDisposition">attachment;filename="${fileName}"</param>
+                <param name="bufferSize">1024</param>
+            </result>
+		</action>
+		<action name="userDownloadDeatilsAddress" method="userDownloadDeatilsAddress" class="com.smb.action.CustomerDownloadAction">			
+			<!-- <result name="userDownloadDeatils">/jsp/displayMsg.jsp</result>		 -->	
+			<result name="success" type="stream">
+                <param name="contentType">application/octet-stream</param>
+                <param name="inputName">inputStream</param>
+                <param name="contentDisposition">attachment;filename="${fileName}"</param>
+                <param name="bufferSize">4096</param>
+            </result>
+           <result name="invalidUser">/index.jsp</result>	
+		</action>
+		<action name="userDownloadProfitDeatils" method="userDownloadProfitDeatils" class="com.smb.action.CustomerDownloadAction">			
+			<result name="profiltDetails">/jsp/displayMsg.jsp</result>			
+		</action>
+		<action name="totalUserDueHistoryDeatils" method="totalUserDueHistoryDeatils" class="com.smb.action.CustomerDownloadAction">			
+			<result name="totalUserDueHistoryDeatils">/jsp/displayMsg.jsp</result>			
+		</action>
+		<action name="downloadProductDeatils" method="downloadProductDeatils" class="com.smb.action.CustomerDownloadAction">			
+			<result name="downloadProductDeatils">/jsp/displayMsg.jsp</result>			
+		</action>
+		<action name="userDownload" method="userDownload" class="com.smb.action.SMBForwardAction">			
+			<result name="userDownload" type="tiles">userDownload</result>
+		</action>
+		<action name="viewPaymentHistoryDetails" method="viewPaymentHistoryDetails" class="com.smb.action.ViewDetailsAction">			
+			<result name="viewPaymentHistoryDetails">/jsp/viewPaymentHistory.jsp</result>
+		</action>
+		<action name="viewCustomerProfitDetails" method="viewCustomerProfitDetails" class="com.smb.action.ViewDetailsAction">			
+			<result name="viewCustomerProfitDetails">/jsp/viewCustomerProfitDetails.jsp</result>
+			<result name="noViewCustomerProfitDetails">/jsp/viewCustomerProfitDetails.jsp</result>
+		</action>
+		<action name="getLedgerBetweenDates" method="getLedgerBetweenDates" class="com.smb.action.DailyLedgerAction">			
+			<result name="getLedgerBetweenDates">/jsp/viewLedgerBetweenDate.jsp</result>
+			<result name="noGetLedgerBetweenDates">/jsp/viewLedgerBetweenDate.jsp</result>
+		</action>
+		<action name="viewMonthlyCollectionDetails" method="viewMonthlyCollectionDetails" class="com.smb.action.ViewDetailsAction">			
+			<result name="viewMonthlyCollection">/jsp/viewMonthlyCollectionDetails.jsp</result>
+			<result name="noViewMonthlyCollection">/jsp/viewMonthlyCollectionDetails.jsp</result>
+		</action>
+		<action name="productDownload" method="productDownload" class="com.smb.action.SMBForwardAction">			
+			<result name="productDownload" type="tiles">productDownload</result>
+		</action>
+		<action name="historyDownload" method="historyDownload" class="com.smb.action.SMBForwardAction">			
+			<result name="historyDownload" type="tiles">historyDownload</result>
+		</action>
+		<!-- CHEETY START -->
+		<action name="showCheety" method="showCheety" class="com.smb.action.CheetyForwardAction">			
+			<result name="showCheety" type="tiles">showCheety</result>
+		</action>
+		<action name="getCheetyId" method="getCheetyId" class="com.smb.action.CheetyCreationAction">			
+			<result name="getCheetyId">/jsp/getCheetyId.jsp</result>			
+		</action>
+		<action name="getCheetyMemberId" method="getCheetyMemberId" class="com.smb.action.CheetyCreationAction">			
+			<result name="getCheetyMemberId">/jsp/getCheetyMemberId.jsp</result>			
+		</action>
+		<action name="cheetyPackageInsert" method="cheetyPackageInsert" class="com.smb.action.CheetyCreationAction">			
+			<result name="cheetyPackageInsert">/jsp/displayMsg.jsp</result> 
+		</action>
+		<action name="cheetyMemberInsert" method="cheetyMemberInsert" class="com.smb.action.CheetyCreationAction">			
+			<result name="cheetyMemberInsert">/jsp/displayMsg.jsp</result> 
+		</action>	
+		<action name="createDailyLedger" method="createDailyLedger" class="com.smb.action.DailyLedgerAction">			
+			<result name="createDailyLedger">/jsp/dailyLedgerDisplayMsg.jsp</result>
+		</action>		
+		<action name="createCheetyMember" method="createCheetyMember" class="com.smb.action.CheetyCreationAction">			
+			<result name="createCheetyMember">/jsp/cheetyMemberJson.jsp</result>
+		</action>	
+		<action name="createCheetyMemberIdList" method="createCheetyMemberIdList" class="com.smb.action.CheetyCreationAction">			
+			<result name="createCheetyMemberIdList">/jsp/cheetyMemberJson.jsp</result>			
+		</action>		
+		<action name="cheetyCalculation" method="cheetyCalculation" class="com.smb.action.CheetyCreationAction">			
+			<result name="dataCalculated">/jsp/cheetyCalculationDue.jsp</result>
+			<result name="dataNotCalculated">/jsp/cheetyCalculationDue.jsp</result>			
+		</action>
+		<action name="viewUserDetailsPage" method="viewUserDetailsPage" class="com.smb.action.ViewDetailsAction">			
+			<result name="viewUserDetailsPage" type="tiles">viewUserDetailsPage</result>				
+		</action>
+		<action name="viewUserDetails" method="viewUserDetails" class="com.smb.action.ViewDetailsAction">			
+			<result name="userTransactionDetails">/jsp/viewTransactionDetails.jsp</result>	
+			<result name="userPaymentDetails">/jsp/viewPaymentDetails.jsp</result>				
+		</action>
+		<action name="cheetyUpdate" method="cheetyUpdate" class="com.smb.action.CheetyCreationAction">			
+			<result name="cheetyUpdate">/jsp/displayMsg.jsp</result>				
+		</action>
+		<action name="viewCheety" method="viewCheety" class="com.smb.action.CheetyForwardAction">			
+			<result name="viewCheety"  type="tiles">viewCheety</result>				
+		</action>
+		<action name="viewCheetyDetails" method="viewCheetyDetails" class="com.smb.action.CheetyCreationAction">			
+			<result name="viewCheetyDetails">/jsp/viewCheetyDetails.jsp</result>				
+		</action>
+		<action name="cheetydownload" method="cheetydownload" class="com.smb.action.CheetyCreationAction">			
+			<result name="cheetydownload">/jsp/displayMsg.jsp</result>				
+		</action>
+		<!-- CHEETY END -->
+						
+	</package>
+</struts>

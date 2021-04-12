@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+  <definition name="homeLayout" template="/jsp/homeTemplate.jsp">   
+      <put-attribute name="myHeader" value="/jsp/header.jsp"/>
+      <put-attribute name="myMenu" value="/jsp/menubar.jsp"/>    
+      <put-attribute name="mySidebar" value="/jsp/sidebar.jsp"/>
+      <put-attribute name="myBody" value=""/>
+      <put-attribute name="myFooter" value="/jsp/footer.jsp"/>
+  </definition>    
+    <definition name="userLogin" extends="homeLayout">
+      <put-attribute name="myBody"   value="/jsp/homeBody.jsp"/>      
+   </definition>
+    <definition name="dailyLedger" extends="homeLayout">
+      <put-attribute name="myBody"   value="/jsp/dailyLedger.jsp"/>      
+   </definition>
+   <definition name="dailyLedgerPage" extends="homeLayout">
+      <put-attribute name="myBody"   value="/jsp/downloadLedger.jsp"/>      
+   </definition>
+   <definition name="viewLedger" extends="homeLayout">
+      <put-attribute name="myBody"   value="/jsp/viewLedgerDetails.jsp"/>   
+   </definition>
+   <definition name="userRegister" extends="homeLayout">
+      <put-attribute name="myBody"   value="/jsp/customerRegistration.jsp"/>      
+   </definition>
+   <definition name="paymentCalculation" extends="homeLayout">
+      <put-attribute name="myBody"   value="/jsp/registrationCalculation.jsp"/>      
+   </definition>
+   <definition name="paymentSave" extends="homeLayout">
+      <put-attribute name="myBody"   value="/jsp/saveRegistration.jsp"/>      
+   </definition>
+   <definition name="userUpdation" extends="homeLayout">
+      <put-attribute name="myBody"   value="/jsp/userUpdate.jsp"/>      
+   </definition>
+    <definition name="getUserDetailsUpdation" extends="homeLayout">
+      <put-attribute name="myBody"   value="/jsp/userUpdate.jsp"/>      
+   </definition>
+   <definition name="getUserDetailsForDelete" extends="homeLayout">
+      <put-attribute name="myBody"   value="/jsp/userUpdateDelete.jsp"/>      
+   </definition>
+   <definition name="createProduct" extends="homeLayout">
+      <put-attribute name="myBody"   value="/jsp/createProduct.jsp"/>      
+   </definition>
+   <definition name="saveProduct" extends="homeLayout">
+      <put-attribute name="myBody"   value="/jsp/createProduct.jsp"/>      
+   </definition>
+   <definition name="userDueCalculation" extends="homeLayout">
+      <put-attribute name="myBody"   value="/jsp/userPaymentUpdateSave.jsp"/>      
+   </definition>
+   <definition name="userFinalDueUpdateDeleteDetails" extends="homeLayout">
+      <put-attribute name="myBody"   value="/jsp/userFinalDueUpdateDelete.jsp"/>      
+   </definition>
+   <definition name="userFinalDueCalculation" extends="homeLayout">
+      <put-attribute name="myBody"   value="/jsp/userFinalDueUpdateDelete.jsp"/>      
+   </definition>
+    <definition name="updateUserDueDetails" extends="homeLayout">
+      <put-attribute name="myBody"   value="/jsp/userPaymentUpdateSave.jsp"/>      
+   </definition>
+   <definition name="userDelete" extends="homeLayout">
+      <put-attribute name="myBody"   value="/jsp/deleteUser.jsp"/>      
+   </definition>
+   <definition name="userUpdateDelete" extends="homeLayout">
+      <put-attribute name="myBody"   value="/jsp/userUpdateDelete.jsp"/>      
+   </definition> 
+   <definition name="deleteDetails" extends="homeLayout">
+      <put-attribute name="myBody"   value="/jsp/deleteUser.jsp"/>      
+   </definition>
+   <definition name="deleteDetails" extends="homeLayout">
+      <put-attribute name="myBody"   value="/jsp/deleteUser.jsp"/>      
+   </definition>   
+   <definition name="viewUserDetails" extends="homeLayout">
+      <put-attribute name="myBody"   value="/jsp/viewUserDetails.jsp"/>      
+   </definition>
+   <definition name="userDownload" extends="homeLayout">
+      <put-attribute name="myBody"   value="/jsp/downloadUserDetails.jsp"/>      
+   </definition>
+   <definition name="adminRegistration" extends="homeLayout">
+      <put-attribute name="myBody"   value="/jsp/adminRegistration.jsp"/>      
+   </definition>
+   <definition name="userAdminDelete" extends="homeLayout">
+      <put-attribute name="myBody"   value="/jsp/userAdminDelete.jsp"/>      
+   </definition>
+   <definition name="userAdminDeletePage" extends="homeLayout">
+      <put-attribute name="myBody"   value="/jsp/userAdminDelete.jsp"/>      
+   </definition>
+   <definition name="viewAdminUsersPage" extends="homeLayout">
+      <put-attribute name="myBody"   value="/jsp/viewAdminUserDetails.jsp"/>      
+   </definition>
+   <definition name="userDownloadDeatils" extends="homeLayout">
+      <put-attribute name="myBody"   value="/jsp/userPaymentDueDownload.jsp"/>      
+   </definition>
+    <definition name="viewUserDetailsPage" extends="homeLayout">
+      <put-attribute name="myBody"   value="/jsp/viewUserDetails.jsp"/>      
+   </definition>
+   <definition name="productDownload" extends="homeLayout">
+      <put-attribute name="myBody"   value="/jsp/downloadProductDetails.jsp"/>      
+   </definition>
+   <definition name="historyDownload" extends="homeLayout">
+      <put-attribute name="myBody"   value="/jsp/downloadDueHistoryDetails.jsp"/>      
+   </definition>
+   <!-- CHEETY START --> 
+   <definition name="showCheety" extends="homeLayout">
+      <put-attribute name="myBody"   value="/jsp/createCheetyDetails.jsp"/>      
+   </definition>
+    <definition name="viewCheety" extends="homeLayout">
+      <put-attribute name="myBody"   value="/jsp/viewCheetyHome.jsp"/>      
+   </definition>
+   <!-- CHEETY END -->
+</tiles-definitions>

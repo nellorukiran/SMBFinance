@@ -1,0 +1,47 @@
+A.moreBtn:link {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 8px; PADDING-RIGHT: 0px; DISPLAY: block; HEIGHT: 22px; FONT-SIZE: 1.2em; TEXT-DECORATION: none; PADDING-TOP: 6px
+}
+A.moreBtnLight:link {
+	/*BORDER-BOTTOM: #d0d0d0 1px solid; BORDER-LEFT: #d0d0d0 1px solid; BACKGROUND:  #cccccc no-repeat right top; BORDER-TOP: #d0d0d0 1px solid; BORDER-RIGHT: #d0d0d0 1px solid*/
+}
+.lightBtnText {
+	COLOR: #222222
+}
+.homeGalleryDots{
+	HEIGHT: 6px;
+	FONT-SIZE: 1.3em;
+	PADDING-TOP: 1px;
+	margin-left: 110px;
+}
+.homeGalleryWrap {
+	POSITION: relative; OVERFLOW: hidden; float: left;
+}
+.homeGalleryWrap .galleryLeftBtn {
+	TEXT-ALIGN: right; MARGIN-TOP: 78px; WIDTH: 23px; FLOAT: left; CURSOR: pointer;padding-right:2px;padding-left:0px;
+}
+.homeGalleryWrap .homeGalleryCarousel {
+	WIDTH: 590px; FLOAT: left; OVERFLOW: hidden; PADDING-TOP: 78px
+}
+.homeGalleryWrap .homeGalleryCarousel IMG {
+	BORDER-BOTTOM: #cccccc 5px solid; BORDER-LEFT: #cccccc 5px solid; BORDER-TOP: #cccccc 5px solid; BORDER-RIGHT: #cccccc 5px solid
+}
+.homeGalleryWrap .galleryRightBtn {
+	TEXT-ALIGN: left; MARGIN-TOP: 78px;	WIDTH: 23px; FLOAT: left; CURSOR: pointer;padding-right:0px;padding-left:2px;
+}
+#homeGalleryBtn {
+	float: left;position:relative;left:23%;padding-top:5px;font-family:Arial, Helvetica, sans-serif;font-size:11px;overflow:hidden;MARGIN: 0px auto; WIDTH: 300px
+}
+.gallery-block{
+	WIDTH: 700px;
+	float:left;
+    margin-top: 20px;
+}
+.homeLeftBlocksHeading{
+	font-family:Arial, Helvetica, sans-serif;font-size:19px;text-decoration: none;
+}
+#subModuleContent{
+	float:left;
+}
+#homeGalleryDots{
+	float:left;
+}
