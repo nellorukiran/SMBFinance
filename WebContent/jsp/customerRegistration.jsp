@@ -26,9 +26,18 @@ String contextPath = request.getContextPath();
 				<div class="fieldDiv">
 					<input type="text" name="address" id="address" value="<%=(request.getParameter("address") != null)?request.getParameter("address").toUpperCase():""%>" placeholder="Enter Customer Address">
 				</div>
+
 				<div class="fieldDiv">
-					<input type="text" name="shop_name" id="shop_name" value="<%=(request.getParameter("shop_name") != null)?request.getParameter("shop_name").toUpperCase():""%>" placeholder="Enter Buyed Shop">
-				</div>
+					<select name="shop_name" id="shop_name" style="width:272px;" >
+							<option value="SRINIVASA">SRINIVASA</option>
+							<option value="SMB">SMB</option>
+                          	<option value="SIMHAPURI">SIMHAPURI</option>
+                          	<option value="SONOVISION">SONOVISION</option>
+                         	<option value="AMMA">AMMA</option>
+                         	<option value="B NEW">B NEW</option>
+                          	<option value="OTHERS">OTHERS</option>
+				     </select>
+				</div>				
 				<div class="fieldDiv">
 					<input type="text" name="model_name" id="model_name" value="<%=(request.getParameter("model_name") != null)?request.getParameter("model_name").toUpperCase():""%>" placeholder="Enter Product Model">
 				</div>
@@ -40,7 +49,8 @@ String contextPath = request.getContextPath();
 				</div>
 				<div class="fieldDiv">
 					<select name="due_time" id="due_time" style="width:272px;">
-				        	<option value="1TO10">1 TO 10</option>
+				        	<option value="1TO5">1 TO 5</option>
+				        	<option value="5TO10">5 TO 10</option>
                           	<option value="10TO15">10 TO 15</option>
                           	<option value="15TO20">15 TO 20</option>
                          	<option value="20TO25">20 TO 25</option>
@@ -55,9 +65,28 @@ String contextPath = request.getContextPath();
 				<div class="fieldDiv">
 					<input type="text" name="buy_date" id="buy_date" value="<%=(request.getParameter("buy_date") != null)?request.getParameter("buy_date"):""%>" onclick="showCalendarControl(this);" placeholder="Enter Purchase Date">
 				</div>
+								
 				<div class="fieldDiv">
-					<input type="text" name="item_name" id="item_name" value="<%=(request.getParameter("item_name") != null)?request.getParameter("item_name").toUpperCase():""%>" placeholder="Enter Product Item">
-				</div>
+					<select name="item_name" id="item_name" style="width:272px;">
+				        	<option value="COT/BED">COT/BED</option>
+				        	<option value="SOFA SET">SOFA SET</option>
+				        	<option value="CHAIRS">CHAIRS</option>
+				        	<option value="BERUVA">BERUVA</option>
+                          	<option value="DIWAN SET">DIWAN SET</option>
+                          	<option value="DRESSING TABLE">DRESSING TABLE</option>
+                          	<option value="DAINING TABLE">DAINING TABLE</option>
+				        	<option value="SMB">SMB</option>
+				        	<option value="MOBILE">MOBILE</option>
+                          	<option value="TV">TV/LED</option>
+                          	<option value="AC">AC</option>
+                          	<option value="FRIDGE">FRIDGE</option>
+                          	<option value="COOLER">COOLER</option>
+                          	<option value="WASHING MACHINE">WASHING MACHINE</option>
+                          	<option value="HOME THEATER">HOMET HEATER</option>
+                         	<option value="MULTIPLE">MULTIPLE</option>
+                          	<option value="OTHERS">OTHERS</option>
+				     </select>
+				</div>		
 				<div class="fieldDiv">
 					<input type="text" name="buy_price" id="buy_price" value="<%=(request.getParameter("buy_price") != null)?request.getParameter("buy_price"):""%>" placeholder="Enter Actul Price"> 
 				</div>
@@ -170,9 +199,6 @@ $("#paymentCalculationForm").validate({
 	}
 });
 $('input').keyup(function(){
-    this.value = this.value.toUpperCase();
-});
-$('input').onchange(function(){
     this.value = this.value.toUpperCase();
 });
 </script>

@@ -47,7 +47,9 @@ public class DBConnection {
 			  //Updated on 02-Mar-2020
 			  //String hostname = "smbfinance1.cxfrg4mycpoz.ap-south-1.rds.amazonaws.com";
 			  //Updated on 23-Dec-2020
-			  String hostname = "smbfinance.cvdm9quflan9.ap-south-1.rds.amazonaws.com";
+			  //String hostname = "smbfinance.cvdm9quflan9.ap-south-1.rds.amazonaws.com";
+			 //Updated on 09-Dec-2021
+			  String hostname = "smbfinance.cggz4shjrmjy.ap-south-1.rds.amazonaws.com";
 			  
 			  String port = "3306";
 			  String jdbcUrl = "jdbc:mysql://" + hostname + ":" +

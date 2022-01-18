@@ -15,6 +15,15 @@
     <definition name="userLogin" extends="homeLayout">
       <put-attribute name="myBody"   value="/jsp/homeBody.jsp"/>      
    </definition>
+   <definition name="updateDate" extends="homeLayout">
+      <put-attribute name="myBody"   value="/jsp/updateDate.jsp"/>      
+   </definition>
+   <definition name="getUserDetailsDateUpdation" extends="homeLayout">
+      <put-attribute name="myBody"   value="/jsp/updateDate.jsp"/>      
+   </definition>
+   <definition name="updateNewDate" extends="homeLayout">
+      <put-attribute name="myBody"   value="/jsp/updateDate.jsp"/>      
+   </definition>
     <definition name="dailyLedger" extends="homeLayout">
       <put-attribute name="myBody"   value="/jsp/dailyLedger.jsp"/>      
    </definition>

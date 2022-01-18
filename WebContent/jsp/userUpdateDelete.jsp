@@ -32,7 +32,7 @@ yes = (yes !=null)?yes:"";
 			
 			<%if(cus_id.length()>0 && yes.length() > 0){%>
 				<div class="update-payment-update-outdiv">
-				<form action="userFinalDueCalculation" method="post" name="getUserDetailsDeleteForm" id="getUserDetailsDeleteForm">	
+				<form action="finalUpdateDelete" method="post" name="getUserDetailsDeleteForm" id="getUserDetailsDeleteForm">	
 				<input type="hidden" name="oldPenality" id="oldPenality" value="<%=(request.getAttribute("penalty") == null || request.getAttribute("penalty").equals(""))?"0":request.getAttribute("penalty")%>"/>		
 		        <div class="update-payment-update-InDiv">
 		        	<div class="update-payment-update-leftDiv">

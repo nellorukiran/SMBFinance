@@ -40,7 +40,7 @@
 }
 
 #CalendarControl .header {
-  background-color: #09CCF8;
+  background-color: #4f76dd;
 }
 
 #CalendarControl .weekday {
@@ -55,7 +55,7 @@
 
 #CalendarControl .current {
   border: 1px solid #339;
-  background-color: #09CCF8;
+  background-color: #4f76dd;
   color: #FFF;
 }
 

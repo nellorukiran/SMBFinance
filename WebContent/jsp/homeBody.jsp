@@ -78,9 +78,9 @@ The company deals in Dealer and Customers Finance.
  They are a consumer focused company with emphasis on profitable growth and operational 
 efficiency to deliver best results to all customers. 
 				</p>
-				<p>The company is a 6-year-old most diversified non-bank in Andrapradesh. Apart from being the largest financier of customers durables in Andrapradesh they are also one of the most profitable firms in this category.
+				<p>The company is a 8-year-old most diversified non-bank in Andrapradesh. Apart from being the largest financier of customers durables in Andrapradesh they are also one of the most profitable firms in this category.
 
-Head Office in Nellore , KAC Plaza , Near to Narthaki Theater, the company has 1500 customers and 15 dealers points in town.</p>
+Head Office in Nellore , Kamakshi Tower , Near to Narthaki Theater, the company has 4500+ customers and 15 dealers points in town.</p>
 			</div>
 		</div>
 		</div><!-- registerDiv -->

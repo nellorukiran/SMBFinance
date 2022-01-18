@@ -56,28 +56,27 @@
   background: linear-gradient(#DDA0DD 0%, #DDA0DD 100%);
 }
 #cssmenu > ul > li {
-  background: #DDA0DD; 
+  background: #4f76dd; 
   /*background: -moz-linear-gradient(#e94f31 0%, #d13516 100%);*/
-  background: -moz-linear-gradient(#DDA0DD 0%, #DDA0DD 100%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #DDA0DD), color-stop(100%, #DDA0DD));
-  background: -webkit-linear-gradient(#DDA0DD 0%, #DDA0DD 100%);
-  background: linear-gradient(#DDA0DD 0%, #DDA0DD 100%);
+  background: -moz-linear-gradient(#4f76dd 0%, #4f76dd 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #4f76dd), color-stop(100%, #4f76dd));
+  background: -webkit-linear-gradient(#4f76dd 0%, #4f76dd 100%);
+  background: linear-gradient(#4f76dd 0%, #4f76dd 100%);
 }
 #cssmenu > ul > li:hover {
-  background: #DDA0DD;
-  background: -moz-linear-gradient(#DDA0DD 0%, #DDA0DD 100%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #DDA0DD), color-stop(100%, #DDA0DD));
-  background: -webkit-linear-gradient(#DDA0DD 0%, #DDA0DD 100%);
-  background: linear-gradient(#DDA0DD 0%, #DDA0DD 100%);
+  background: #4f76dd;
+  background: -moz-linear-gradient(#4f76dd 0%, #4f76dd 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #4f76dd), color-stop(100%, #4f76dd));
+  background: -webkit-linear-gradient(#4f76dd 0%, #4f76dd 100%);
+  background: linear-gradient(#4f76dd 0%, #4f76dd 100%);
 }
 #cssmenu > ul > li > a {
   font-size: 14px;
   display: block;
   background: url(../images/pattern.png) top left repeat;
-  color: green;
-  border: 1px solid #ba2f14;
+  border: 2px solid #19927A;
   border-top: none;
-  text-shadow: 0 -1px 0px green;
+  text-shadow: 0 -1px 0px #E8EEED;
 }
 #cssmenu > ul > li > a > span {
   display: block;
@@ -93,10 +92,12 @@
   border-bottom: none;
 }
 #cssmenu > ul > li.has-sub > a span {
-  background: url(../images/icon_plus.png) 96% center no-repeat;
+  /*background: url(../images/icon_plus.png) 96% center no-repeat;*/
+  background: none repeat scroll 0 0 #4f76dd;
 }
 #cssmenu > ul > li.has-sub.active > a span {
-  background: url(../images/icon_minus.png) 96% center no-repeat;
+  /*background: url(../images/icon_minus.png) 96% center no-repeat;*/
+  background: none repeat scroll 0 0 #4f76dd;
 }
 /* Sub menu */
 #cssmenu ul ul {

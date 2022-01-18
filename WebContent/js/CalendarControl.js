@@ -236,7 +236,7 @@ function CalendarControl() {
       table = table + "</tr>";
     }
 
-    table = table + "<tr class='header'><th colspan='7' style='padding: 3px; background-color:#09CCF8;'><a href='javascript:clearCalendarControl();'>Clear</a> | <a href='javascript:hideCalendarControl();'>Close</a></td></tr>";
+    table = table + "<tr class='header'><th colspan='7' style='padding: 3px; background-color:#4f76dd;'><a href='javascript:clearCalendarControl();'>Clear</a> | <a href='javascript:hideCalendarControl();'>Close</a></td></tr>";
     table = table + "</table>";
 
     return table;

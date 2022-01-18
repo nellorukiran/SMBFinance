@@ -12,8 +12,8 @@ yes = (yes !=null)?yes:"";
 	<div class="regInnerDiv">
 		<div class="registerDiv">
 			<div class="update-payment-search-out">
-				<form action="getUserDetailsUpdation" name="getUserDetailsForm" id="getUserDetailsForm" method="post">
-					<div class="headDiv">PAYMENT UPDATION</div>
+				<form action="getUserDetailsDateUpdation" name="getUserDetailsForm" id="getUserDetailsForm" method="post">
+					<div class="headDiv">DATE UPDATION</div>
 					<div class="headDivMsg">
 						<form:if test="hasActionErrors()">
 							<div class="errorMsg">
@@ -32,44 +32,17 @@ yes = (yes !=null)?yes:"";
 			
 			<%if(cus_id.length()>0 && yes.length() > 0){%>
 				<div class="update-payment-update-outdiv">
-				<form action="userDueCalculation" method="post" name="getUserDetailsUpdationForm" id="getUserDetailsUpdationForm">	
+				<form action="updateNewDate" method="post" name="getUserDetailsUpdationForm" id="getUserDetailsUpdationForm">	
 				<input type="hidden" name="oldPenality" id="oldPenality" value="<%=(request.getAttribute("penalty") == null || request.getAttribute("penalty").equals(""))?"0":request.getAttribute("penalty")%>"/>		
 		        <div class="update-payment-update-InDiv">
-		        	<div class="update-payment-update-leftDiv">
+		        	
 		        		<div class="update-payment-update-flied-out">
 		        			<div class="update-payment-update-flied-lable">CUS ID :</div>
 		        			<div class="update-payment-update-flied-lable-out">
 		        				<input class="color" style="background-color:lightgray;" type="text" name="cus_id" value="<%=cus_id%>" readonly/>
 		        			</div>
 		        		</div>
-		        		<div class="update-payment-update-flied-out">
-				        	<div class="update-payment-update-flied-lable">TOT DUE AMT:</div>
-				        	<div class="update-payment-update-flied-lable-out">
-				        		<input class="color" style="background-color:lightgray;" type="text" name="due_amt" value="<%=request.getAttribute("due_amt")%>" readonly/>
-				        	</div>
-				        </div>
-				        <div class="update-payment-update-flied-out">
-				        	<div class="update-payment-update-flied-lable">PENALTY :</div>
-				        	<div class="update-payment-update-flied-lable-out">
-				        		<input class="color" type="text" name="penalty"  id="penalty" value="<%=(request.getAttribute("penalty") == null || request.getAttribute("penalty").equals(""))?"0":request.getAttribute("penalty")%>"/>
-				        	</div>
-				        </div>
-				        <div class="update-payment-update-flied-out">
-				        	<div class="update-payment-update-flied-lable">PAID DUE :</div>
-				        	<div class="update-payment-update-flied-lable-out">
-				        		<input class="color" type="text" name="paid_amt" id="paid_amt" value=""/>
-				        	</div>
-				        </div>
-				        <div class="update-payment-update-flied-out">
-				        	<div class="update-payment-update-flied-lable">TOTAL DUES :</div>
-				        	<div class="update-payment-update-flied-lable-out">
-				        		<input class="color" type="text" name="tot_dues" value="<%=request.getAttribute("tot_dues")%>"/>
-				        	</div>
-				        </div>
-				         
-				        
-		        	</div>
-		        	<div class="update-payment-update-rightDiv">
+		        		
 		        		<div class="update-payment-update-flied-out">
 		        			<div class="update-payment-update-flied-lable">CUS NAME :</div>
 		        			<div class="update-payment-update-flied-lable-out">
@@ -77,32 +50,20 @@ yes = (yes !=null)?yes:"";
 		        			</div>
 		        		</div>
 		        		<div class="update-payment-update-flied-out">
-				        	<div class="update-payment-update-flied-lable">PER DUE :</div>
+				        	<div class="update-payment-update-flied-lable">PURCHASE DATE :</div>
 				        	<div class="update-payment-update-flied-lable-out">
-				        		<input class="color" style="background-color:lightgray;" type="text" name="per_due_amt"	value="<%=request.getAttribute("per_due_amt")%>" readonly/>
+				        		<input class="color" style="background-color:lightgray;" type="text" name="purchase_date"	value="<%=request.getAttribute("purchase_date")%>" readonly/>
 				        	</div>
 				        </div>
 				        <div class="update-payment-update-flied-out">
-				        	<div class="update-payment-update-flied-lable">PAYMENT DUE :</div>
+				        	<div class="update-payment-update-flied-lable">NEW DATE :</div>
 				        	<div class="update-payment-update-flied-lable-out">
-				        		<input class="color" style="background-color:lightgray;" type="text" name="next_due_amt" value="<%=request.getAttribute("next_due_amt")%>" readonly/>
-				        	</div>
-				        </div>
-				         <div class="update-payment-update-flied-out">
-				        	<div class="update-payment-update-flied-lable">DUE DATE :</div>
-				        	<div class="update-payment-update-flied-lable-out">
-				        		<input class="color" type="text" size="20" name="due_date" id="due_date" onclick="showCalendarControl(this);" readonly/>
+				        		<input class="color" type="text" name="new_date" onclick="showCalendarControl(this);" placeholder="Enter New Date"/>
 				        	</div>
 				        </div>
 				       
-				        <div class="update-payment-update-flied-out">
-				        	<div class="update-payment-update-flied-lable">PHONE :</div>
-				        	<div class="update-payment-update-flied-lable-out">
-				        		<input class="color" type="text" name="phone" value="<%=request.getAttribute("phone")%>"/>
-				        	</div>
-				        </div>
 				       
-		        	</div>
+		        	
 		        </div>
 		        
 		        

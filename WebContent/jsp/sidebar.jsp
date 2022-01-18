@@ -55,6 +55,11 @@ if(userType.length() > 0 && userType.equals("ADMIN")){
 		      </ul>
    			</li>
     <%} %>
+    <li class='has-sub'><a href='#'><span>UPDATE DATE</span></a>
+      <ul>
+         <li><a href='updateDate'><span>Update Date</span></a></li>
+      </ul> 
+   </li>
    <li class='has-sub'><a href='#'><span>DOWNLOADS</span></a>
       <ul>
          <li><a href='userDownload'><span>Payment Details</span></a></li>

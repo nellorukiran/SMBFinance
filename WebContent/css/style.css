@@ -34,7 +34,7 @@ ul, ol {
 
 a {
 	text-decoration: none;
-	color: #560969;
+	color: #E8EEED;
 }
 
 a:hover {
@@ -200,12 +200,12 @@ input {
     font-size: 14px;
 }
 input[type="submit"] {
-    background-color: #7d0f33;
-    border-color: #693647;
+    background-color: #4f76dd;
+    border-color: #4f76dd;
     border-radius: 7px;
     border-style: solid;
     border-width: 1px;
-    box-shadow: 0 1px #cd4170 inset, 0 1px 2px #93284c;
+    box-shadow: 0 1px #4f76dd inset, 0 1px 2px #4f76dd;
     box-sizing: content-box;
     color: #ffffff;
     font-size: 12px;
@@ -216,12 +216,12 @@ input[type="submit"] {
     text-shadow: 0 1px #4d1124;
 }
 input[type="button"] {
-    background-color: #7d0f33;
-    border-color: #693647;
+    background-color: #4f76dd;
+    border-color: #4f76dd;
     border-radius: 7px;
     border-style: solid;
     border-width: 1px;
-    box-shadow: 0 1px #cd4170 inset, 0 1px 2px #ffffff;
+    box-shadow: 0 1px #4f76dd inset, 0 1px 2px #ffffff;
     box-sizing: content-box;
     color: #ffffff;
     font-size: 12px;
@@ -678,8 +678,21 @@ font-weight: bold;
 }
 .regInnerDiv{
 	width:848px;
-	padding: 10px 26px;
+	padding: 10px 100px;
 	float:left;
+}
+.regInnerDiv{
+	width:848px;
+	padding: 10px 100px;
+	float:left;
+}
+.regInnerDiv1{
+	width:848px;
+	padding: 10px 240px;
+	float:left;
+}
+.update-payment-update-delete-flied-submit{
+	margin-left:100px;
 }
 .adminRegInnerDiv{
 	width:290px;
@@ -716,6 +729,7 @@ font-weight: bold;
 .registerRight{
 	width:320px;
 	float: left;
+	margin-left: 40px;
 }
 .registerDiv{
 	width:860px;float:left;
@@ -876,11 +890,17 @@ font-weight: bold;
 .update-payment-update-outdiv-one{
 	width:400px;float:left;margin-left: 170px;border: 2px solid;border-radius: 7px;margin-top: 15px;padding-bottom: 11px;
 }
+.update-payment-update-outdiv-one2{
+	width:640px;float:left;margin-left: 30px;border: 2px solid;border-radius: 7px;margin-top: 15px;padding-bottom: 11px;
+}
 .update-payment-update-outdiv-one1{
 	width:370px;float:left;margin-left: 95px;border: 2px solid;border-radius: 7px;margin-top: 15px;padding-bottom: 11px;
 }
 .headDivSuccessMsg{
-	width:333px;margin-top:7px;margin-left: 20px;font-family: arial;
+	width:333px;margin-top:7px;margin-left: 167px;font-family: arial;
+}
+.headDivSuccessMsgDelete{
+	width:333px;margin-top:7px;margin-left: 25px;font-family: arial;
 }
 .update-payment-update-flied-out{
 	float: left;
