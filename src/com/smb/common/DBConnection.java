@@ -40,23 +40,24 @@ public class DBConnection {
 		*/
 		public static Connection getDBConnection(){
 			Connection con = null;
-			String dbName = "smbfinance";
-			  String userName = "smbfinance";
-			  String password = "smbfinance";
+			String dbName = "u530425252_tL6ss";
+			  String userName = "u530425252_63xSN";
+			  String password = "T/knqS0z";
 			  
 			  //Updated on 02-Mar-2020
 			  //String hostname = "smbfinance1.cxfrg4mycpoz.ap-south-1.rds.amazonaws.com";
 			  //Updated on 23-Dec-2020
 			  //String hostname = "smbfinance.cvdm9quflan9.ap-south-1.rds.amazonaws.com";
 			 //Updated on 09-Dec-2021
-			  String hostname = "smbfinance.cggz4shjrmjy.ap-south-1.rds.amazonaws.com";
-			  
+			 // String hostname = "smbfinance.cggz4shjrmjy.ap-south-1.rds.amazonaws.com";
+			  //Update on 28-Feb-2023
+			  String hostname = "sql356.main-hosting.eu";
 			  String port = "3306";
 			  String jdbcUrl = "jdbc:mysql://" + hostname + ":" +
 			    port + "/" + dbName + "?user=" + userName + "&password=" + password;
 			   try {
 				    System.out.println("Loading driver...");
-				    Class.forName("com.mysql.jdbc.Driver");
+				    Class.forName("com.mysql.cj.jdbc.Driver");
 				    System.out.println("Driver loaded!");
 				    con = DriverManager.getConnection(jdbcUrl);
 				  } catch (ClassNotFoundException e) {
