@@ -42,7 +42,6 @@ public class DBConnection {
 		// Updated on 09-Dec-2021
 		// String hostname = "smbfinance.cggz4shjrmjy.ap-south-1.rds.amazonaws.com";
 		// Update on 28-Feb-2023
-		if (con == null) {
 			String hostname = "sql356.main-hosting.eu";
 			String port = "3306";
 			String jdbcUrl = "jdbc:mysql://" + hostname + ":" + port + "/" + dbName + "?user=" + userName + "&password="
@@ -59,7 +58,6 @@ public class DBConnection {
 			} catch (Exception e) {
 				System.out.println("Exception while DB Connection #####-2" + e);
 			}
-		}
 		return con;
 	}
 

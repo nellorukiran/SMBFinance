@@ -417,30 +417,28 @@ public class CustomerUpdationBizlogic {
 				tractionRecStatus.executeUpdate();
 
 				awsCon.commit();
-				tractionRecStatus.close();
-				insertHistory.close();
-				dueUpdation.close();
-				if (awsCon != null)
-					awsCon.close();
 				resultStr = "duePaymentUpdated";
 				System.out.println("[" + cus_id + "] Customer Updated in AWS DB");
 			}
 		} catch (Exception e) {
 			System.out.println("Exception while updating records in AWS DB ###-1" + e);
 			try {
+				awsCon.rollback();
+			} catch (Exception e1) {}
+			resultStr = "duePaymentNotUpdated";
+		}finally {
+			try {
+				tractionRecStatus.close();
+				insertHistory.close();
+				dueUpdation.close();
+				tractionRecStatus.close();
+				insertHistory.close();
+				dueUpdation.close();
 				if (awsCon != null)
 					awsCon.close();
-			} catch (Exception e1) {
-				try {
-					System.out.println("Exception while updating records in AWS DB ###-2" + e1);
-					if (awsCon != null)
-						awsCon.rollback();
-					resultStr = "duePaymentNotUpdated";
-				} catch (Exception ex) {
-					System.out.println("Exception while updating records in AWS DB ###-3" + ex);
-				}
+				System.out.println("Connections are Closed after Updating due details!");
+			} catch (Exception e) {
 			}
-			resultStr = "duePaymentNotUpdated";
 		}
 
 		try {
@@ -471,28 +469,15 @@ public class CustomerUpdationBizlogic {
 				tractionRecStatus1.executeUpdate();
 
 				con.commit();
-				tractionRecStatus1.close();
-				insertHistory1.close();
-				dueUpdation1.close();
-				if (con != null)
-					con.close();
 				resultStr = "duePaymentUpdated";
 				System.out.println("[" + cus_id + "] Customer Updated in DB");
 			}
 		} catch (Exception e) {
 			System.out.println("Exception while updating records in DB ###-1" + e);
 			try {
-				if (con != null)
-					con.close();
-			} catch (Exception e1) {
-				try {
-					System.out.println("Exception while updating records in DB ###-2" + e1);
-					con.rollback();
-					resultStr = "duePaymentNotUpdated";
-				} catch (Exception ex) {
-					System.out.println("Exception while updating records in DB ###-3" + ex);
-				}
-			}
+				con.rollback();
+				resultStr = "duePaymentNotUpdated";
+			} catch (Exception e1) {}
 			resultStr = "duePaymentNotUpdated";
 		} finally {
 			try {
@@ -504,13 +489,10 @@ public class CustomerUpdationBizlogic {
 				dueUpdation.close();
 				if (con != null)
 					con.close();
-				if (awsCon != null)
-					awsCon.close();
 				System.out.println("Connections are Closed after Updating due details!");
 			} catch (Exception e) {
 			}
 		}
-
 		return resultStr;
 	}
 }
