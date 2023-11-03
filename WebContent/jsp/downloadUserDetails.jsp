@@ -18,10 +18,10 @@ String scriptName = (String)application.getAttribute("script.Name");
 		
 		<table >
 			<tr>
-				<td><a style="font-family: arial;font-size: 15px;font-weight: bold;text-decoration: none;color:blue;" href="userDownloadDeatilsCusId">Report Order By File</a></td>
+				<td><a style="font-family: arial;font-size: 15px;font-weight: bold;text-decoration: none;color:blue;" href="userDownloadDeatilsCusId">Order By Customer ID</a></td>
 			</tr>
 			<tr>
-				<td><a style="font-family: arial;font-size: 15px;font-weight: bold;color:blue;" href="userDownloadDeatilsAddress">Report Order By Address</a></td>
+				<td><a style="font-family: arial;font-size: 15px;font-weight: bold;color:blue;" href="userDownloadDeatilsAddress">Order By Address</a></td>
 			</tr>
 		</table>
 		</center>

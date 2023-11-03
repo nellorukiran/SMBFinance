@@ -102,9 +102,7 @@ public class CustomerRegistrationBizlogic {
 	public static String customerCreationSave(HttpServletRequest request) {
 
 		PreparedStatement transactionStatement = null, paymentDetailsStatement = null, itemDetailsStatement = null;
-		PreparedStatement transactionStatement1 = null, paymentDetailsStatement1 = null, itemDetailsStatement1 = null;
 		Connection con = null;
-		Connection awsCon = null;
 		Date date = new Date();
 		int cus_id = 0, buy_price = 0, advance = 0, tot_dues = 0, saled_price = 0, penalty = 0;
 		String cus_name = "", address = "", item_name = "", due_time = "", buy_date = "", shop_name = "",
@@ -183,11 +181,10 @@ public class CustomerRegistrationBizlogic {
 		} catch (Exception ee) {
 		}
 		try {
-			awsCon = DBConnection.getAWSDBConnection();
-
-			if (awsCon != null) {
-				awsCon.setAutoCommit(false);
-				transactionStatement = awsCon.prepareStatement(CommonConstents.TRANSACTION_DETAILS_INSERT_QUERY);
+			con = DBConnection.getDBConnection();
+			if (con != null) {
+				con.setAutoCommit(false);
+				transactionStatement = con.prepareStatement(CommonConstents.TRANSACTION_DETAILS_INSERT_QUERY);
 				transactionStatement.setInt(1, cus_id);
 				transactionStatement.setString(2, cus_name);
 				transactionStatement.setString(3, address);
@@ -214,7 +211,7 @@ public class CustomerRegistrationBizlogic {
 
 				transactionStatement.executeUpdate();
 
-				paymentDetailsStatement = awsCon.prepareStatement(CommonConstents.PAYMENT_DETAILS_INSERT_QUERY);
+				paymentDetailsStatement = con.prepareStatement(CommonConstents.PAYMENT_DETAILS_INSERT_QUERY);
 
 				paymentDetailsStatement.setInt(1, cus_id);
 				paymentDetailsStatement.setString(2, cus_name);
@@ -232,7 +229,7 @@ public class CustomerRegistrationBizlogic {
 
 				paymentDetailsStatement.executeUpdate();
 
-				itemDetailsStatement = awsCon.prepareStatement(CommonConstents.ITEM_DETAILS_INSERT_QUERY);
+				itemDetailsStatement = con.prepareStatement(CommonConstents.ITEM_DETAILS_INSERT_QUERY);
 
 				itemDetailsStatement.setInt(1, cus_id);
 				itemDetailsStatement.setString(2, cus_name);
@@ -245,89 +242,7 @@ public class CustomerRegistrationBizlogic {
 				itemDetailsStatement.setFloat(9, profit);
 
 				itemDetailsStatement.executeUpdate();
-				awsCon.commit();
-				transactionStatement.close();
-				paymentDetailsStatement.close();
-				itemDetailsStatement.close();
-				awsCon.close();
-				System.out.println("[" + cus_id + "] Customer Inserted in AWS DB");
-			}
-		} catch (Exception e) {
-			System.out.println("Exception while DB Connect / Operation #####-1" + e);
-			try {
-				if (awsCon != null)
-					awsCon.rollback();
-				isSaved = "notsaved";
-			} catch (Exception ee) {
-			}
-		}
-		try {
-			con = DBConnection.getDBConnection();
-			if (con != null) {
-				con.setAutoCommit(false);
-				transactionStatement1 = con.prepareStatement(CommonConstents.TRANSACTION_DETAILS_INSERT_QUERY);
-				transactionStatement1.setInt(1, cus_id);
-				transactionStatement1.setString(2, cus_name);
-				transactionStatement1.setString(3, address);
-				transactionStatement1.setString(4, buy_date);
-				transactionStatement1.setString(5, due_time);
-				transactionStatement1.setString(6, item_name);
-				transactionStatement1.setString(7, shop_name);
-				transactionStatement1.setString(8, model_name);
-				transactionStatement1.setInt(9, buy_price);
-				transactionStatement1.setFloat(10, profit);
-				transactionStatement1.setFloat(11, tot_price);
-				transactionStatement1.setInt(12, advance);
-				transactionStatement1.setFloat(13, bal_amt);
-				transactionStatement1.setFloat(14, due_amt);
-				transactionStatement1.setInt(15, tot_dues);
-				transactionStatement1.setFloat(16, per_due_amt);
-				transactionStatement1.setInt(17, penalty);
-				transactionStatement1.setString(18, phone);
-				transactionStatement1.setFloat(19, intrest_amt);
-				transactionStatement1.setFloat(20, tot_profit);
-				transactionStatement1.setFloat(21, doc_amt);
-				transactionStatement1.setObject(22, date);
-				transactionStatement1.setString(23, "I");
-
-				transactionStatement1.executeUpdate();
-
-				paymentDetailsStatement1 = con.prepareStatement(CommonConstents.PAYMENT_DETAILS_INSERT_QUERY);
-
-				paymentDetailsStatement1.setInt(1, cus_id);
-				paymentDetailsStatement1.setString(2, cus_name);
-				paymentDetailsStatement1.setString(3, address);
-				paymentDetailsStatement1.setString(4, item_name);
-				paymentDetailsStatement1.setString(5, buy_date);
-				paymentDetailsStatement1.setString(6, due_time);
-				paymentDetailsStatement1.setFloat(7, due_amt);
-				paymentDetailsStatement1.setInt(8, tot_dues);
-				paymentDetailsStatement1.setFloat(9, per_due_amt);
-				paymentDetailsStatement1.setFloat(10, next_due_amt);
-				paymentDetailsStatement1.setInt(11, penalty);
-				paymentDetailsStatement1.setString(12, phone);
-				paymentDetailsStatement1.setString(13, "I");
-
-				paymentDetailsStatement1.executeUpdate();
-
-				itemDetailsStatement1 = con.prepareStatement(CommonConstents.ITEM_DETAILS_INSERT_QUERY);
-
-				itemDetailsStatement1.setInt(1, cus_id);
-				itemDetailsStatement1.setString(2, cus_name);
-				itemDetailsStatement1.setString(3, buy_date);
-				itemDetailsStatement1.setString(4, item_name);
-				itemDetailsStatement1.setString(5, shop_name);
-				itemDetailsStatement1.setString(6, model_name);
-				itemDetailsStatement1.setInt(7, buy_price);
-				itemDetailsStatement1.setInt(8, saled_price);
-				itemDetailsStatement1.setFloat(9, profit);
-
-				itemDetailsStatement1.executeUpdate();
 				con.commit();
-				transactionStatement1.close();
-				paymentDetailsStatement1.close();
-				itemDetailsStatement1.close();
-				con.close();
 				System.out.println("[" + cus_id + "] Customer Inserted in DB");
 			}
 			isSaved = "saved";
@@ -341,13 +256,11 @@ public class CustomerRegistrationBizlogic {
 			}
 		} finally {
 			try {
-				transactionStatement1.close();
-				paymentDetailsStatement1.close();
-				itemDetailsStatement1.close();
+				transactionStatement.close();
+				paymentDetailsStatement.close();
+				itemDetailsStatement.close();
 				if (con != null)
 					con.close();
-				if (awsCon != null)
-					awsCon.close();
 				System.out.println("Connections are Closed after loggedIn!");
 			} catch (Exception e) {
 			}
@@ -468,43 +381,24 @@ public class CustomerRegistrationBizlogic {
 	}
 
 	public static String checkIsValidUser(HttpServletRequest request) {
-		String username = "", password = "", isValid = "", userPassword = "", userType = "", user_name = "",
-				first_name = "";
+		String username = "", password = "", isValid = "", userPassword = "", userType = "", user_name = "", first_name = "";
 		username = request.getParameter("username");
 		username = (username != null) ? username.trim() : "";
 		password = request.getParameter("password");
 		password = (password != null) ? password.trim() : "";
 
 		Connection con = null;
-		Connection awsCon = null;
 		PreparedStatement selectUserProfile = null;
 		ResultSet rs = null;
 		try {
-			awsCon = DBConnection.getAWSDBConnection();
-			if (awsCon != null) {
-				selectUserProfile = awsCon.prepareStatement(CommonConstents.SELECT_SMB_USER_QUERY);
+			con = DBConnection.getDBConnection();
+			if (con != null) {
+				selectUserProfile = con.prepareStatement(CommonConstents.SELECT_SMB_USER_QUERY);
 				selectUserProfile.setString(1, username);
 				rs = selectUserProfile.executeQuery();
-			} else {
-				con = DBConnection.getDBConnection();
-				if (con != null) {
-					selectUserProfile = con.prepareStatement(CommonConstents.SELECT_SMB_USER_QUERY);
-					selectUserProfile.setString(1, username);
-					rs = selectUserProfile.executeQuery();
-				}
 			}
 		} catch (Exception e) {
-			System.out.println("Exception while AWS DB Connect / Operation #####-1" + e);
-			try {
-				con = DBConnection.getDBConnection();
-				if (con != null) {
-					selectUserProfile = con.prepareStatement(CommonConstents.SELECT_SMB_USER_QUERY);
-					selectUserProfile.setString(1, username);
-					rs = selectUserProfile.executeQuery();
-				}
-			} catch (Exception e1) {
-				System.out.println("Exception while DB Connect / Operation #####-2" + e);
-			}
+			System.out.println("Exception while DB Connect / Operation #####-1" + e);
 		}
 		try {
 			if (rs.next()) {
@@ -535,8 +429,6 @@ public class CustomerRegistrationBizlogic {
 				selectUserProfile.close();
 				if (con != null)
 					con.close();
-				if (awsCon != null)
-					awsCon.close();
 				System.out.println("Connections are Closed after loggedIn!");
 			} catch (Exception e) {
 			}

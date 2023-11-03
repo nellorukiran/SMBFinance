@@ -3,7 +3,6 @@ package com.smb.bizlogic;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -12,7 +11,6 @@ import java.text.Format;
 import java.text.SimpleDateFormat;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.swing.JFileChooser;
 
 import org.apache.poi.hssf.usermodel.HSSFRow;
@@ -26,23 +24,7 @@ import com.smb.util.CommonUtil;
 public class CustomerDownloadBizlogic {
 	static String TITLE ="SREE MAHALAKSHMI BINDUHASINI FINANCE";
 	static String displayMsg = "";
-	/*public static String userDownloadProfitDeatils(String fromDate,String toDate,HttpServletRequest request){
-		Connection con = null;
-		PreparedStatement profitDetailsQury = null;
-		if(fromDate.length() > 0 && toDate.length() > 0){
-			try{
-				con = DBConnection.getDBConnection();					
-				profitDetailsQury = con.prepareStatement("SELECT * FROM TRANSACTION_DETAILS WHERE PURCHASE_DATE BETWEEN STR_TO_DATE('"+fromDate+"','%D-%M-%Y') AND STR_TO_DATE('"+toDate+"','%D-%M-%Y')");	
-				profitDetailsQury.setString(1, fromDate);
-				profitDetailsQury.setString(2, toDate);
-				ResultSet r = profitDetailsQury.executeQuery();
-				request.setAttribute("resultset", r);
-				displayMsg = "gotProfiltDetails";
-			}catch (Exception e) {displayMsg = "notGotProfiltDetails";}
-		}
-		
-		return displayMsg;
-	}*/
+	
 	public static String totalUserDueHistoryDeatils(){
 		//String displayMsg="";
 		//System.out.println("h1");
@@ -54,9 +36,7 @@ public class CustomerDownloadBizlogic {
 		try{
 			con = DBConnection.getDBConnection();
 			paymentRowCount = con.prepareStatement(CommonConstents.SELECT_MAX_DUES);
-			//System.out.println(CommonConstents.SELECT_MAX_DUES);
 			paymentcntRslt = paymentRowCount.executeQuery();
-			//System.out.println("paymentcntRslt");
 			while(paymentcntRslt.next()){
 				maxDueNum = paymentcntRslt.getInt("maxId");
 				maxDueNum = (maxDueNum > 7)?maxDueNum:7;
@@ -94,7 +74,6 @@ public class CustomerDownloadBizlogic {
 							paid_amt = (paid_amt > 0)?paid_amt:0;
 							paid_date = (Date)historyRslt.getObject("PAY_DATE");
 							SimpleDateFormat dt2 = new SimpleDateFormat("dd-MM-yyyy");
-							//paid_date = (paid_date.equalsIgnoreCase("null"))?"(-)":"("+paid_date+")";
 							if(paid_date ==null){
 								paid_dateStr = "";
 							}
@@ -103,7 +82,6 @@ public class CustomerDownloadBizlogic {
 							}else{
 								paid_dateStr="";
 							}
-							//out.print(paid_amt+paid_date);
 							if(paid_amt > 0){
 								row.createCell((short)resultCell).setCellValue(paid_amt+paid_dateStr);
 							}else{

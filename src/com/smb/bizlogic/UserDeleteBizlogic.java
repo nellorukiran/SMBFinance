@@ -78,8 +78,10 @@ public class UserDeleteBizlogic {
 	    }        
 	    return resultStr;
 	}
-public static String userFinalDueUpdateDelete(HttpServletRequest request){
+ public static String userFinalDueUpdateDelete(HttpServletRequest request){
 		PreparedStatement dueUpdation = null,insertHistory =null,deleteQuery =null,tractionRecStatus=null;
+		PreparedStatement dueUpdation1 = null,insertHistory1 =null,deleteQuery1 =null,tractionRecStatus1=null;
+		
 		Connection con = null;	
 		String resultStr = "";
 		int tot_dues=0,penalty=0,due_amt=0,next_due_amt=0,paid_amt=0,cus_id=0;
@@ -114,8 +116,7 @@ public static String userFinalDueUpdateDelete(HttpServletRequest request){
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
 		try{payment_date = sdf.parse(due_date);}catch (Exception ee) {}
         
-        try{
-        int multipleTable =0;
+        //int multipleTable =0;
         paid_amt=Integer.parseInt(request.getParameter("paid_amt"));
         paid_amt = (paid_amt > 0)?paid_amt:0;
         request.setAttribute("cus_id",cus_id);
@@ -127,65 +128,54 @@ public static String userFinalDueUpdateDelete(HttpServletRequest request){
         request.setAttribute("phone",phone);
         request.setAttribute("due_date",due_date);
         request.setAttribute("yes", "yes");
-		con = DBConnection.getDBConnection();
-		con.setAutoCommit(false);
+        try{ 
+	        con = DBConnection.getDBConnection();
+			con.setAutoCommit(false);
 		
-		//if(penalty > 0){
-			dueUpdation = con.prepareStatement(CommonConstents.PAYMENT_DETAILS_UPDATE_QUERY);
-			dueUpdation.setString(1, cus_name);
-			dueUpdation.setInt(2, tot_dues);
-			dueUpdation.setInt(3, penalty);
-			dueUpdation.setInt(4, next_due_amt);
-			dueUpdation.setInt(5, due_amt);
-			dueUpdation.setString(6, phone);
-			dueUpdation.setString(7, "U");
-			dueUpdation.setInt(8, cus_id);
-		/*}else{
-			dueUpdation = con.prepareStatement(CommonConstents.PAYMENT_DETAILS_NON_PENALTY_UPDATE_QUERY);
-			dueUpdation.setString(1, cus_name);
-			dueUpdation.setInt(2, tot_dues);
-			dueUpdation.setInt(3, next_due_amt);
-			dueUpdation.setInt(4, due_amt);
-			dueUpdation.setString(5, phone);
-			dueUpdation.setString(6, "U");
-			dueUpdation.setInt(7, cus_id);
-		}*/
-		dueUpdation.executeUpdate();
-		insertHistory = con.prepareStatement(CommonConstents.PAYMENT_HISTORY_INSERT_QUERY);
-			insertHistory.setInt(1, cus_id);
-			insertHistory.setInt(2, paid_amt);
-			insertHistory.setString(3,due_date);
-			insertHistory.setObject(4,payment_date);
-			insertHistory.setInt(5,due_amt);
+		   if(con != null) {
+				dueUpdation = con.prepareStatement(CommonConstents.PAYMENT_DETAILS_UPDATE_QUERY);
+				dueUpdation.setString(1, cus_name);
+				dueUpdation.setInt(2, tot_dues);
+				dueUpdation.setInt(3, penalty);
+				dueUpdation.setInt(4, next_due_amt);
+				dueUpdation.setInt(5, due_amt);
+				dueUpdation.setString(6, phone);
+				dueUpdation.setString(7, "U");
+				dueUpdation.setInt(8, cus_id);
 			
-			insertHistory.executeUpdate();
-			
-		tractionRecStatus = con.prepareStatement(CommonConstents.TRANSACTION_REC_STATUS_UPDATE);
-		tractionRecStatus.setString(1, "D");
-		tractionRecStatus.setInt(2, cus_id);
-		tractionRecStatus.executeUpdate();
-		
-		deleteQuery = con.prepareStatement(CommonConstents.PAYMENT_DETAILS_DELETE_QUERY);	
-		deleteQuery.setInt(1, cus_id);
-		multipleTable = deleteQuery.executeUpdate();
-		con.commit();  
-		dueUpdation.close(); 
-		insertHistory.close(); 
-		deleteQuery.close(); 
-		tractionRecStatus.close(); 
-		con.close(); 	
-		resultStr ="userFinalUpdateDelete";			
+				dueUpdation.executeUpdate();
+				insertHistory = con.prepareStatement(CommonConstents.PAYMENT_HISTORY_INSERT_QUERY);
+				insertHistory.setInt(1, cus_id);
+				insertHistory.setInt(2, paid_amt);
+				insertHistory.setString(3,due_date);
+				insertHistory.setObject(4,payment_date);
+				insertHistory.setInt(5,due_amt);
+				
+				insertHistory.executeUpdate();
+				
+				tractionRecStatus = con.prepareStatement(CommonConstents.TRANSACTION_REC_STATUS_UPDATE);
+				tractionRecStatus.setString(1, "D");
+				tractionRecStatus.setInt(2, cus_id);
+				tractionRecStatus.executeUpdate();
+				
+				deleteQuery = con.prepareStatement(CommonConstents.PAYMENT_DETAILS_DELETE_QUERY);	
+				deleteQuery.setInt(1, cus_id);
+				deleteQuery.executeUpdate();
+				con.commit();  
+        	}
+			resultStr ="userFinalUpdateDelete";			
 		}catch (Exception e) {	
-			try{
+			System.out.println("### CustomerDeletionBizlogic DB Exception ::"+e);
+			try{con.rollback();resultStr = "duePaymentNotUpdated";}catch (Exception ex) {} 
+		}finally {
+			try {
 				dueUpdation.close(); 
 				insertHistory.close(); 
 				deleteQuery.close(); 
 				tractionRecStatus.close(); 
-				con.close();
-			}catch (Exception e1) {	}
-			System.out.println("### CustomerUpdationBizlogic Exception ::"+e);
-			try{con.rollback();resultStr = "duePaymentNotUpdated";}catch (Exception ex) {} 
-		}        
+				con.close(); 	
+			}catch(Exception e){}
+		}
 		return resultStr;
 	}
 	public static String userDeleteDetails(HttpServletRequest request){
@@ -228,21 +218,21 @@ public static String userFinalDueUpdateDelete(HttpServletRequest request){
 				}else{
 					isDelete ="notdeleted";
 				}
-			//con.close();
 			}
-			deleteQuy.close();
-			itemDetailsQury.close();
-			con.close();
+			
 		}catch(Exception e){
 			System.out.println("UserDeleteBizlogic Exception e ::"+e);
 			try{
 				con.rollback();
-				deleteQuy.close();
-				itemDetailsQury.close();
-				con.close();
 			}catch (Exception ex) {
 				System.out.println("UserDeleteBizlogic Exception ex ::"+ex);
 			}
+		}finally {
+			try {
+				deleteQuy.close();
+				itemDetailsQury.close();
+				con.close();
+			}catch(Exception e){}
 		}
 		return isDelete;
 	}
